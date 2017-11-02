@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <h2>Vue slide images</h2>
+    <ul>
+        <li>Mouse hover to stop play</li>
+        <li>Mouse leave to play</li>
+    </ul>
+    <image-slider>
+        <p>
+            <button @click="prev">Previous</button>
+            <button @click="next">Next</button>
+        </p>
+        <div v-for="number in [currentNumber]" transition="fade">
+            <figure>
+                <img :src="images[Math.abs(currentNumber) % images.length].link" @mouseover="stopRotation" @mouseout="startRotation" />
+                <figcaption>
+                    {{images[Math.abs(currentNumber) % images.length].caption}}
+                </figcaption>
+            </figure>
+        </div>
+    </image-slider>
+    <p>If it's not sliding, move the mouse in and out.</p>
+    <script src="main.js"></script>
+</body>
+
+</html>
